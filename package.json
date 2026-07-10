@@ -1,43 +1,45 @@
 {
-  "name": "kitraw",
+  "name": "luxm",
   "version": "1.0.0",
-  "author": "kitraw",
+  "description": "Nextjs template generator",
+  "author": "araujoio",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/araujoio/kitraw.git"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "main": "dist/index.js",
-  "type": "module",
-  "exports": {
-    ".": "./dist/index.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "bin": "./dist/index.js",
-  "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup --clean && tsx src/utils/copy-templates.ts",
-    "typecheck": "tsc --noEmit",
-    "clean": "rimraf dist",
-    "start": "node dist/index.js",
-    "test": "vitest",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "url": "https://github.com/araujoio/luxm.git"
   },
   "keywords": [
-    "kitraw",
+    "luxm",
     "cli",
     "nextjs",
     "react",
     "typescript",
     "tailwind"
   ],
-  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "bin": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup --clean && tsx src/utils/copy-templates.ts",
+    "start": "node dist/index.js",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "test": "vitest"
+  },
   "dependencies": {
+    "@clack/prompts": "^1.6.0",
     "chalk": "5.6.2",
     "commander": "14.0.3",
     "execa": "9.6.1",
