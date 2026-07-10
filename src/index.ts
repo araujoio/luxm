@@ -8,15 +8,11 @@ async function main() {
   const program = new Command();
 
   program
-    .name("kitraw")
+    .name("luxm")
     .description("a modern generator for nextjs projects")
     .version("1.0.0");
 
-  program
-    .addCommand(init)
-    .addCommand(add)
-    .addCommand(rm)
-    .addCommand(mv)
+  program.addCommand(init).addCommand(add).addCommand(rm).addCommand(mv);
 
   program.parse();
 }
