@@ -1,15 +1,15 @@
 {
-  "name": "luxm",
-  "version": "1.0.0",
+  "name": "sleeke",
+  "version": "1.0.1",
   "description": "Nextjs template generator",
   "author": "araujoio",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/araujoio/luxm.git"
+    "url": "https://github.com/araujoio/sleeke.git"
   },
   "keywords": [
-    "luxm",
+    "sleeke",
     "cli",
     "nextjs",
     "react",
@@ -21,7 +21,9 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "bin": "./dist/index.js",
+  "bin": {
+    "luxw": "dist/index.js"
+  },
   "files": [
     "dist"
   ],
