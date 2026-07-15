@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from '@wrksz/themes/next';
 import { ThemeHotkey } from '@/components/theme-hotkey';
+import { CookieUpdater } from '@/components/cookie-updater';
 import { routing } from '@/i18n/routing';
 import { hasLocale } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
@@ -62,15 +63,16 @@ export default async function RootLayout({children, params}: Props) {
   const messages = await getMessages();
   
   return (
-    <html lang = { locale } suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange themeColor={{ light: "#ffffff", dark: "#0a0a0a" }}>
-            <ThemeHotkey />
-            { children }
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <CookieUpdater locale={locale} />
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange themeColor={{ light: "#ffffff", dark: "#0a0a0a" }}>
+              <ThemeHotkey />
+              {children}
+            </ThemeProvider>
+          </NextIntlClientProvider>
       </body>
     </html>
-  )
+  );
 }
