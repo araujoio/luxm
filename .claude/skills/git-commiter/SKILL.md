@@ -27,11 +27,28 @@ reference.
   - Any doubt about which type applies, or a change that doesn't cleanly
     fit `feat`/`fix`.
 
-## 1. Determine Changelog File
+## 1. Determine Changelog File (MANDATORY — always check real system date)
 
-Always use today's date in `YYMMDD` format and create or update:
+**Never assume, guess, or reuse a date from earlier in the conversation or
+from a previous session.** Dates drift easily and this is a common source
+of writing to the wrong changelog file. Always fetch the actual current
+date from the system before touching any changelog file:
+
+```bash
+date +%y%m%d
+```
+
+Use the exact output of this command as `YYMMDD` — do not reformat it, do
+not recalculate it manually, do not trust a date mentioned earlier in the
+conversation. Run this command fresh every time this skill starts, even if
+it was already run earlier in the same session (the day may have rolled
+over, especially in long-running sessions).
+
+The changelog file for this run is:
 
 `.claude/changes/YYMMDD.md`
+
+(with `YYMMDD` being the literal output of the command above).
 
 ---
 
@@ -97,7 +114,8 @@ Use this information to produce an accurate changelog and commit message
 Document today's changes in the changelog.
 
 - **Location:** `.claude/changes/YYMMDD.md`
-- Always use today's date.
+- Use the `YYMMDD` from the `date +%y%m%d` command run in Step 1 (never a
+  guessed or remembered date).
 - If the file already exists, **append** the new entry.
 - **Never overwrite or remove** existing content.
 
@@ -380,6 +398,10 @@ git push
 
 ## CRITICAL RULES
 
+- **Always fetch the real system date with `date +%y%m%d` before writing to
+  any changelog file.** Never assume, reuse, or infer the date from
+  conversation context — this determines which file gets written to and
+  getting it wrong means changes land in the wrong day's file.
 - **Never stage the entire repo blindly.** No bare `git add .` / `git add -A`
   unless the user explicitly asked to commit everything. Always work off an
   explicit target list (files/paths).
